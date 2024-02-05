@@ -63,7 +63,7 @@ class MembersController extends BaseController
         }
 
         if(password_verify($password, $memberData['m_password'])) {
-            $key = getenv('JWT_SECRET_KEY');
+            $key = getenv('JWT_SECRET');
             $payload = array(
                 'm_id'      => $memberData['m_id'],
                 'm_account' => $memberData['m_account']

@@ -31,6 +31,8 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 //$routes->get('/', 'Home::index');
 
+$routes->options('/(:any)', 'Home::options', ['filter' => 'ApiAccessFilter']);
+
 $routes->get('/', 'MembersController::index');
 $routes->get('/register', 'MembersController::renderRegisterPage');
 $routes->post('/register', 'MembersController::register');
@@ -38,6 +40,15 @@ $routes->get('/login', 'MembersController::renderLoginPage');
 $routes->post('/login', 'MembersController::login');
 
 
+$routes->group('/', ['filter' => 'JwtAuth','ApiAccessFilter'], function($routes)
+{
+    $routes->get('/home', 'MemberManage::index');
+    $routes->get('/logout', 'MembersController::logout');
+
+    $routes->get('/editMemberData', 'MemberManage::renderEditMemberDataPage');
+    $routes->post('/editMemberData', 'MemberManage::update');
+    $routes->delete('/delete', 'MemberManage::delete');
+});
 
 
 /*

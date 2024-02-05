@@ -25,7 +25,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'JwtAuth'       => \App\Filters\JwtAuth::class,
-        //'ApiAccessFilter'  => \App\Filters\ApiAccessFilter::class,
+        'ApiAccessFilter'  => \App\Filters\ApiAccessFilter::class,
     ];
 
     /**
