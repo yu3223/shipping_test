@@ -26,7 +26,6 @@ class JwtAuth implements FilterInterface
                 
         }
 
-        // 這邊邏輯比較簡單，你等等可以看下
         // check if token is null or empty
         if (is_null($token) || empty($token)) {
             $response = service('response');
@@ -56,6 +55,3 @@ class JwtAuth implements FilterInterface
     }
 }
 
-// 備註 : 
-// 先把filter當作是守門員，它必須抵擋非法請求，所以只要遇到不是我們想要的請求，我們就把它擋掉
-// 然後回傳response回去，因為這是一個HTTP交互~
